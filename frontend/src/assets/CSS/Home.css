@@ -1,0 +1,12 @@
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra las tarjetas en el contenedor */
+    gap: 20px; /* Espacio entre las tarjetas */
+    padding: 20px; /* Espacio alrededor del contenedor */
+  }
+  
+  .card-wrapper {
+    width: calc(33.333% - 40px); /* Ajusta el ancho para que tres tarjetas quepan en una fila */
+    margin: 10px;
+  }

@@ -1,0 +1,13 @@
+.card {
+    width: 100%;
+    border: 1px solid #ddd; /* Borde alrededor de la tarjeta */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden; /* Para que el contenido no se salga del borde */
+    background-color: #fff; /* Fondo blanco */
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+  }
