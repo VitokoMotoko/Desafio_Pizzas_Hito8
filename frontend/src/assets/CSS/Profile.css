@@ -1,0 +1,24 @@
+.profile {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .profile h2 {
+    margin-bottom: 20px;
+  }
+  
+  .profile p {
+    margin-bottom: 10px;
+  }
+  
+  .profile button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .profile button:hover {
+    background-color: #0056b3;
+  }

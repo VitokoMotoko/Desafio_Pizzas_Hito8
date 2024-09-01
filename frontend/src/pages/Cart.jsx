@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import '../assets/CSS/Cart.css';
 
-function Cart({ cart, setCart, updateTotal }) {
+function Cart({ cart, setCart }) {
   useEffect(() => {
     const total = cart.reduce((acc, pizza) => acc + pizza.price * pizza.quantity, 0);
-    updateTotal(total);
-  }, [cart, updateTotal]);
+    // updateTotal(total); // No es necesario si ya se maneja en Navbar
+  }, [cart]);
 
   const increaseQuantity = (index) => {
     const newCart = [...cart];

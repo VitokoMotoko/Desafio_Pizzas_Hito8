@@ -1,9 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../assets/CSS/Navbar.css';
 
 const Navbar = ({ total = 0 }) => {
-  const token = false;
+  const token = false; // Cambia esto a `true` para simular que el usuario está autenticado
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Aquí atmbien se puede agregar la lógica para cerrar sesión, como eliminar el token de autenticación
+    alert("Sesión cerrada");
+    navigate('/'); // Redirige al usuario a la página de inicio
+  };
 
   return (
     <nav className="navbar">
@@ -13,7 +20,7 @@ const Navbar = ({ total = 0 }) => {
         {token ? (
           <>
             <Link to="/profile">🔓 Profile</Link>
-            <Link to="/logout">🔒 Logout</Link>
+            <button onClick={handleLogout}>🔒 Logout</button>
           </>
         ) : (
           <>
@@ -23,7 +30,7 @@ const Navbar = ({ total = 0 }) => {
         )}
       </div>
       <div className="navbar-right">
-        <button>🛒 Total: ${total.toLocaleString()}</button>
+        <Link to="/cart">🛒 Total: ${total.toLocaleString()}</Link>
       </div>
     </nav>
   );

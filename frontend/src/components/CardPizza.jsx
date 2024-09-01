@@ -17,7 +17,7 @@ const ingredientEmojis = {
 };
 
 function CardPizza({ name, price, ingredients, img, addToCart }) {
-  const pizza = { name, price, ingredients, img };
+  const pizza = { name, price, ingredients, img, quantity: 1 };
 
   return (
     <div className="card m-3" style={{ width: '18rem' }}>
