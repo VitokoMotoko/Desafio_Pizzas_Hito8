@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../assets/CSS/Navbar.css';
+import { CartContext } from '../context/CartContext';
 
-const Navbar = ({ total = 0 }) => {
-  const token = false; // Cambia esto a `true` para simular que el usuario está autenticado
+const Navbar = () => {
+  const { total } = useContext(CartContext);
+  const token = false; // Cambiar esto a `true` para simular que el usuario está autenticado
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Aquí atmbien se puede agregar la lógica para cerrar sesión, como eliminar el token de autenticación
     alert("Sesión cerrada");
     navigate('/'); // Redirige al usuario a la página de inicio
   };

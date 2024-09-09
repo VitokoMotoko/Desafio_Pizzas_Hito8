@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import Header from '../components/Header';
 import CardPizza from '../components/CardPizza';
 import '../assets/CSS/Home.css';
+import { CartContext } from '../context/CartContext';
 
-function Home({ addToCart }) {
+function Home() {
   const [pizzas, setPizzas] = useState([]);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/pizzas')

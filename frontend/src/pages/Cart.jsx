@@ -1,29 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import '../assets/CSS/Cart.css';
+import { CartContext } from '../context/CartContext';
 
-function Cart({ cart, setCart }) {
-  useEffect(() => {
-    const total = cart.reduce((acc, pizza) => acc + pizza.price * pizza.quantity, 0);
-    // updateTotal(total); // No es necesario si ya se maneja en Navbar
-  }, [cart]);
-
-  const increaseQuantity = (index) => {
-    const newCart = [...cart];
-    newCart[index].quantity += 1;
-    setCart(newCart);
-  };
-
-  const decreaseQuantity = (index) => {
-    const newCart = [...cart];
-    if (newCart[index].quantity > 1) {
-      newCart[index].quantity -= 1;
-    } else {
-      newCart.splice(index, 1); // Elimina la pizza del carrito si la cantidad es 0
-    }
-    setCart(newCart);
-  };
-
-  const total = cart.reduce((acc, pizza) => acc + pizza.price * pizza.quantity, 0);
+function Cart() {
+  const { cart, increaseQuantity, decreaseQuantity, total } = useContext(CartContext);
 
   return (
     <div className="cart-container">
