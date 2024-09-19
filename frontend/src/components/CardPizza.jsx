@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../assets/CSS/CardPizza.css';
 
 const ingredientEmojis = {
@@ -16,7 +17,7 @@ const ingredientEmojis = {
   pimientos: '🌶️'
 };
 
-function CardPizza({ name, price, ingredients, img, addToCart }) {
+function CardPizza({ name, price, ingredients, img, id, addToCart }) {
   const pizza = { name, price, ingredients, img, quantity: 1 };
 
   return (
@@ -36,10 +37,10 @@ function CardPizza({ name, price, ingredients, img, addToCart }) {
         <hr />
         <p className="card-text text-center mt-2">Precio: ${price.toLocaleString()}</p>
         <div className="d-flex justify-content-between">
-          <button className="btn btn-primary">
+          <Link to={`/pizza/${id}`} className="btn btn-primary">
             Ver Más
             <img src="/src/assets/img/ojos.png" alt="Ver más" style={{ width: '20px', marginLeft: '5px' }} />
-          </button>
+          </Link>
           <button className="btn btn-dark" onClick={() => addToCart(pizza)}>
             Añadir
             <img src="/src/assets/img/carrito.png" alt="Añadir al carrito" style={{ width: '20px', marginLeft: '5px' }} />

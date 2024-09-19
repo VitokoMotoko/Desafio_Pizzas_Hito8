@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../assets/CSS/Navbar.css';
+import { UserContext } from '../context/UserContext';
 import { CartContext } from '../context/CartContext';
 
 const Navbar = () => {
   const { total } = useContext(CartContext);
-  const token = false; // Cambiar esto a `true` para simular que el usuario está autenticado
+  const { token, logout } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    logout();
     alert("Sesión cerrada");
     navigate('/'); // Redirige al usuario a la página de inicio
   };
