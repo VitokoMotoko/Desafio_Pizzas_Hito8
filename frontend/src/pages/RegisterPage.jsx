@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 import '../assets/CSS/Form.css';
 
 function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const { register } = useContext(UserContext);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password || !confirmPassword) {
       alert('Todos los campos son obligatorios');
@@ -15,6 +17,7 @@ function RegisterPage() {
     } else if (password !== confirmPassword) {
       alert('Las contraseñas no coinciden');
     } else {
+      await register(email, password);
       alert('Registro exitoso');
     }
   };

@@ -2,10 +2,24 @@ import React, { useContext } from 'react';
 import '../assets/CSS/Cart.css';
 import { CartContext } from '../context/CartContext';
 import { UserContext } from '../context/UserContext';
+import axios from 'axios';
 
 function Cart() {
   const { cart, increaseQuantity, decreaseQuantity, total } = useContext(CartContext);
   const { token } = useContext(UserContext);
+
+  const handleCheckout = async () => {
+    try {
+      await axios.post('http://localhost:5000/api/checkouts', { cart }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      alert('Compra realizada con éxito');
+    } catch (error) {
+      console.error('Error during checkout:', error);
+    }
+  };
 
   return (
     <div className="cart-container">
@@ -23,7 +37,7 @@ function Cart() {
         </div>
       ))}
       <h3 className="cart-total">Total: ${total.toLocaleString()}</h3>
-      <button className="cart-checkout" disabled={!token}>Pagar</button>
+      <button className="cart-checkout" onClick={handleCheckout} disabled={!token}>Pagar</button>
     </div>
   );
 }

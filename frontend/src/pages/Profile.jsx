@@ -1,21 +1,32 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 import '../assets/CSS/Profile.css';
 
 const Profile = () => {
-  const email = "usuario@example.com"; // Email estático por ahora
+  const { email, getProfile, logout } = useContext(UserContext);
   const navigate = useNavigate();
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const profileData = await getProfile();
+      setProfile(profileData);
+    };
+    fetchProfile();
+  }, [getProfile]);
 
   const handleLogout = () => {
-    // Aquí puedes agregar la lógica para cerrar sesión, como eliminar el token de autenticación
+    logout();
     alert("Sesión cerrada");
-    navigate('/'); // Redirige al usuario a la página de inicio
+    navigate('/');
   };
 
   return (
     <div className="profile">
       <h2>Perfil de Usuario</h2>
       <p>Email: {email}</p>
+      {profile && <p>Nombre: {profile.name}</p>}
       <button onClick={handleLogout}>Cerrar sesión</button>
     </div>
   );
